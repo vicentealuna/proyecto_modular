@@ -9,10 +9,11 @@ export class Server {
 
     this.port = port;
     this.origin = origin;
+    this.routes = [];
   }
 
-  addRoute(path, ...handlers) {
-    this.app.use(`api/${path}`, ...handlers);
+  addRoute(routes) {
+    this.routes.push(routes);
   }
 
   start() {
@@ -24,6 +25,8 @@ export class Server {
       }),
     );
     this.app.use(express.json());
+
+    this.routes.forEach((route) => this.app.use(route));
 
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);

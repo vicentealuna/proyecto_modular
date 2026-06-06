@@ -1,5 +1,7 @@
 import { Server } from "./server/server.js";
 import { envs } from "./utils/dotenv.js";
+import authRoutes from "./routes/auth.routes.js";
+import productRoutes from "./routes/product.route.js";
 
 (() => {
   main();
@@ -12,7 +14,8 @@ function main() {
   });
 
   // Add Routes Here
-  // server.addRoute("/api/v1", controller.method);
+  server.addRoute(authRoutes);
+  server.addRoute(productRoutes);
 
   server.start();
 }
