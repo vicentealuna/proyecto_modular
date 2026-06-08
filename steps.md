@@ -15,8 +15,8 @@ _Objetivo: Configurar tu espacio de trabajo inicial y estructurar los archivos d
 - [x] **Tarea 1.3:** Instala la librería Express ejecutando `npm install express` en tu terminal.
 - [x] **Tarea 1.4:** Crea un archivo llamado `server.js` (o `app.js`) en la raíz del proyecto. Este será el punto de entrada de tu servidor.
 - [x] **Tarea 1.5:** Crea una carpeta llamada `database` en la raíz del proyecto para simular la base de datos local.
-- [ ] **Tarea 1.6:** Dentro de la carpeta `database/`, crea un archivo llamado `usuarios.json` que contenga un arreglo vacío: `[]`.
-- [ ] **Tarea 1.7:** Dentro de `database/`, crea un archivo llamado `productos_disponibles.json` e introduce una lista inicial de 3 a 5 productos de prueba (cada uno con `id`, `nombre`, `precio`, `descripcion`, `categoria`, `stock` e `imagenes`).
+- [ x] **Tarea 1.6:** Dentro de la carpeta `database/`, crea un archivo llamado `usuarios.json` que contenga un arreglo vacío: `[]`.
+- [x] **Tarea 1.7:** Dentro de `database/`, crea un archivo llamado `productos_disponibles.json` e introduce una lista inicial de 3 a 5 productos de prueba (cada uno con `id`, `nombre`, `precio`, `descripcion`, `categoria`, `stock` e `imagenes`).
 - [ ] **Tarea 1.8:** Dentro de `database/`, crea un archivo llamado `productos_vendidos.json` inicializado con un arreglo vacío: `[]`.
 - [ ] **Tarea 1.9:** Dentro de `database/`, crea un archivo llamado `clientes.json` inicializado con un arreglo vacío: `[]`.
 - [ ] **Tarea 1.10:** Inicializa tu repositorio de Git ejecutando el comando `git init` en la raíz del proyecto.
