@@ -5,15 +5,44 @@ import { Responser } from '../utils/responser.js';
 const {enviarRespuesta } = Responser;
 
 const guardarProducto = (req, res) => {
-  const { nombre, precio } = req.body;
-  
-  if (!nombre || !precio) {
-    return enviarRespuesta(res, 400, false, "El nombre y el precio son obligatorios");
+  const {
+    nombre,
+    precio,
+    descripcion = '',
+    categoria = 'General',
+    stock = 0,
+    imagen = '',
+  } = req.body;
+
+  if (!nombre || typeof nombre !== 'string' || !nombre.trim()) {
+    return enviarRespuesta(res, 400, false, 'El nombre del producto es obligatorio');
   }
 
-  const productoGuardado = productosService.registrarProducto(nombre, precio);
-  return enviarRespuesta(res, 201, true, "Producto guardado con éxito", productoGuardado);
+  const precioNumerico = Number(precio);
+  const stockNumerico = Number(stock ?? 0);
 
+  if (!Number.isFinite(precioNumerico) || precioNumerico < 0) {
+    return enviarRespuesta(res, 400, false, 'El precio debe ser un número válido mayor o igual a 0');
+  }
+
+  if (!Number.isFinite(stockNumerico) || stockNumerico < 0) {
+    return enviarRespuesta(res, 400, false, 'El stock debe ser un número válido mayor o igual a 0');
+  }
+
+  try {
+    const productoGuardado = productosService.registrarProducto({
+      nombre: nombre.trim(),
+      precio: precioNumerico,
+      descripcion,
+      categoria,
+      stock: stockNumerico,
+      imagen,
+    });
+
+    return enviarRespuesta(res, 201, true, 'Producto guardado con éxito', productoGuardado);
+  } catch (error) {
+    return enviarRespuesta(res, 400, false, error.message);
+  }
 };
 
 //controlador para ver los productos disponibles en la lista de productos disponibles
