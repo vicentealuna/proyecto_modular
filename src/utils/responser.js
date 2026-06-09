@@ -12,4 +12,17 @@ export const Responser = {
       message,
     });
   },
+
+  enviarRespuesta: (res, code, success, message, data = null) => {
+    const response = {
+      success,
+      message,
+    };
+
+    if (data !== null) {
+      response.data = data;
+    }
+
+    return res.status(code).json(response);
+  },
 };

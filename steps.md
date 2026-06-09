@@ -34,9 +34,9 @@ _Objetivo: Implementar los servicios que permitirán el registro seguro y el ini
 
 - [x] **Tarea 2.1:** Configura un servidor Express básico dentro de `server.js` que escuche en el puerto 3000 y muestre un mensaje en la consola.
 - [x] **Tarea 2.2:** Permite que tu servidor reciba y entienda datos en formato JSON agregando la línea `app.use(express.json());` antes de tus rutas.
-- [ ] **Tarea 2.3:** Instala la librería para encriptar contraseñas ejecutando `npm install bcryptjs` en la terminal.
-- [ ] **Tarea 2.4:** Instala la librería para manejo de tokens de sesión ejecutando `npm install jsonwebtoken` en la terminal.
-- [ ] **Tarea 2.5:** Crea la estructura de una ruta POST para el registro en el archivo `server.js`: `app.post('/api/auth/register', (req, res) => { ... });`.
+- [ x] **Tarea 2.3:** Instala la librería para encriptar contraseñas ejecutando `npm install bcryptjs` en la terminal.
+- [ x] **Tarea 2.4:** Instala la librería para manejo de tokens de sesión ejecutando `npm install jsonwebtoken` en la terminal.
+- [ x] **Tarea 2.5:** Crea la estructura de una ruta POST para el registro en el archivo `server.js`: `app.post('/api/auth/register', (req, res) => { ... });`.
 - [ ] **Tarea 2.6:** En la ruta de registro, extrae los parámetros `nombre`, `email` y `contraseña` del cuerpo de la petición (`req.body`).
 - [ ] **Tarea 2.7:** Utiliza la función para encriptar la contraseña recibida antes de proceder a guardarla.
 - [ ] **Tarea 2.8:** Lee el archivo `database/usuarios.json`, agrega el nuevo usuario con su contraseña ya oculta/encriptada y vuelve a escribir el archivo actualizado.
