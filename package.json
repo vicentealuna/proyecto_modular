@@ -19,6 +19,7 @@
     "dev": "nodemon ./src/app.js"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "env-var": "^7.5.0",
