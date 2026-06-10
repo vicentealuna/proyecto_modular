@@ -12,6 +12,7 @@ const guardarProducto = (req, res) => {
     categoria = 'General',
     stock = 0,
     imagen = '',
+    tendencia = false
   } = req.body;
 
   if (!nombre || typeof nombre !== 'string' || !nombre.trim()) {
@@ -37,6 +38,7 @@ const guardarProducto = (req, res) => {
       categoria,
       stock: stockNumerico,
       imagen,
+      tendencia: !!tendencia
     });
 
     return enviarRespuesta(res, 201, true, 'Producto guardado con éxito', productoGuardado);
@@ -52,7 +54,19 @@ const obtenerProductos = (req, res) => {
   return enviarRespuesta(res, 200, true, "Productos obtenidos con éxito", productos);
 };
 
+const buscarProductoPorId = (req, res) => {
+  const { id } = req.params;
+  const producto = productosService.buscarPorId(Number(id));
+
+  if (!producto) {
+    return enviarRespuesta(res, 404, false, 'Producto no encontrado');
+  }
+
+  return enviarRespuesta(res, 200, true, 'Producto encontrado', producto);
+};
+
 export default {
   guardarProducto,
-  obtenerProductos
+  obtenerProductos,
+  buscarProductoPorId
 };

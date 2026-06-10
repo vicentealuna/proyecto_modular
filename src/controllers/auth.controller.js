@@ -19,3 +19,21 @@ export const login = function(req, res) {
     const token = AuthService.createJWT(user);
     Responser.success(res, { token });
 }
+
+export const register = function(req, res) {
+    const { username, password, name } = req.body;
+
+    if (!username || !password || !name) {
+        return Responser.error(res, 'Username, password and name are required', 400);
+    }
+
+    const newUser = AuthService.createUser({ username, password, name });
+
+    if (!newUser) {
+        return Responser.error(res, 'Username already exists', 409);
+    }
+
+    delete newUser.password; // Eliminar la propiedad de contraseña del objeto de respuesta
+
+    return Responser.success(res, newUser, 201);
+}

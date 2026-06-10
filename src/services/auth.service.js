@@ -1,6 +1,7 @@
 import userDB from "../db/users.db.js";
 import jwt from 'jsonwebtoken';
 import { envs } from "../utils/dotenv.js";
+import { comparePassword } from "../utils/hash.js";
 
 export default {
     validateUser : ({username, password}) => {
@@ -8,16 +9,16 @@ export default {
 
         if (!user) return false;
 
-        if (user.password !== password) return false;
+        if (comparePassword(password, user.password)) return user;
 
-        return user;
+        return false;
     },
 
     createJWT : (user) => {
         return jwt.sign(
             { id: user.id, name: user.name },
             envs.JWT_SECRET,
-            { expiresIn: '24h' }
+            { expiresIn: '72h' }
         );
     },
 
@@ -34,4 +35,12 @@ export default {
             return false;
         }
     },
+
+    createUser : ({username, password, name}) => {
+        const existingUser = userDB.findUserByUsername(username.toLowerCase());
+
+        if (existingUser) return false;
+
+        return userDB.addUser(username.toLowerCase(), password, name);
+    }
 }
