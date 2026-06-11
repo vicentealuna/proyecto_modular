@@ -20,8 +20,8 @@ export class Server {
     // Globals Middlewares
     this.app.use(
       cors({
-        origin: [`${this.origin}`],
-        methods: ["GET", "POST"],
+        origin: this.origin ? this.origin.split(",") : [],
+        methods: ["GET", "POST", "PUT"],
       }),
     );
     this.app.use(express.json());
